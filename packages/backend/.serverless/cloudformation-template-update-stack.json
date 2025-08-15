@@ -198,7 +198,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/createApplication.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/createApplication.zip"
         },
         "Handler": "src/handlers/applications/create.handler",
         "Runtime": "nodejs20.x",
@@ -228,7 +228,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/listApplications.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/listApplications.zip"
         },
         "Handler": "src/handlers/applications/list.handler",
         "Runtime": "nodejs20.x",
@@ -258,7 +258,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/updateApplication.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/updateApplication.zip"
         },
         "Handler": "src/handlers/applications/update.handler",
         "Runtime": "nodejs20.x",
@@ -288,7 +288,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/deleteApplication.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/deleteApplication.zip"
         },
         "Handler": "src/handlers/applications/delete.handler",
         "Runtime": "nodejs20.x",
@@ -318,7 +318,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/hello.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/hello.zip"
         },
         "Handler": "src/handlers/hello.handler",
         "Runtime": "nodejs20.x",
@@ -348,7 +348,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/register.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/register.zip"
         },
         "Handler": "src/handlers/auth/register.handler",
         "Runtime": "nodejs20.x",
@@ -378,7 +378,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/my-application-tracker-backend/dev/1755290615240-2025-08-15T20:43:35.240Z/login.zip"
+          "S3Key": "serverless/my-application-tracker-backend/dev/1755296234913-2025-08-15T22:17:14.913Z/login.zip"
         },
         "Handler": "src/handlers/auth/login.handler",
         "Runtime": "nodejs20.x",
@@ -421,16 +421,6 @@
         "CodeSha256": "eK93GD5f/sJPviM0Scj7gC4snZQQJa+lCyg7iHu2OAc="
       }
     },
-    "UpdateApplicationLambdaVersionX1taOK8ZCmJBLwGm1F93lMnWep4J0Lw58EsuJ8goA": {
-      "Type": "AWS::Lambda::Version",
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "UpdateApplicationLambdaFunction"
-        },
-        "CodeSha256": "pK66Dsg0futPoMP4DVfY8lQdjCaUjhZS80TGNT8zwV8="
-      }
-    },
     "ListApplicationsLambdaVersionj4146ZgfjfhrqBPEYRD2oZHMBZhuF7dep7geRoeOhDg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
@@ -439,6 +429,16 @@
           "Ref": "ListApplicationsLambdaFunction"
         },
         "CodeSha256": "cXaiOBYlF+BOQMhoZgptYbG4YzZyaIV5NYUN9X1rWDY="
+      }
+    },
+    "UpdateApplicationLambdaVersionX1taOK8ZCmJBLwGm1F93lMnWep4J0Lw58EsuJ8goA": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdateApplicationLambdaFunction"
+        },
+        "CodeSha256": "pK66Dsg0futPoMP4DVfY8lQdjCaUjhZS80TGNT8zwV8="
       }
     },
     "DeleteApplicationLambdaVersionvAT4oOH7FFenBFwUk6PcHvisou5BxH1A8FFnoKldi3Y": {
@@ -451,16 +451,6 @@
         "CodeSha256": "P5U+kqdPdzOgjPlXQY/DQzB2gersdJ0sMp/2aYMPUdY="
       }
     },
-    "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ": {
-      "Type": "AWS::Lambda::Version",
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "LoginLambdaFunction"
-        },
-        "CodeSha256": "zCQ1oOy4+RBhW9ObxAV3Qsl4EGubKx85DT+1Al/+Gfw="
-      }
-    },
     "RegisterLambdaVersionPdvp7Ep0nsCzBcCBo3skfwUYwxGU8gJOJ4Dn4bAOmw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
@@ -469,6 +459,16 @@
           "Ref": "RegisterLambdaFunction"
         },
         "CodeSha256": "eg5xTZaKj8yaTnfydVgQwkGJgNo0Dvm540ABXlhBqMI="
+      }
+    },
+    "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LoginLambdaFunction"
+        },
+        "CodeSha256": "zCQ1oOy4+RBhW9ObxAV3Qsl4EGubKx85DT+1Al/+Gfw="
       }
     },
     "ApiGatewayRestApi": {
@@ -1066,7 +1066,7 @@
         "LoginLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1755290602838": {
+    "ApiGatewayDeployment1755296222903": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1375,15 +1375,6 @@
         "Name": "sls-my-application-tracker-backend-dev-CreateApplicationLambdaFunctionQualifiedArn"
       }
     },
-    "UpdateApplicationLambdaFunctionQualifiedArn": {
-      "Description": "Current Lambda function version",
-      "Value": {
-        "Ref": "UpdateApplicationLambdaVersionX1taOK8ZCmJBLwGm1F93lMnWep4J0Lw58EsuJ8goA"
-      },
-      "Export": {
-        "Name": "sls-my-application-tracker-backend-dev-UpdateApplicationLambdaFunctionQualifiedArn"
-      }
-    },
     "ListApplicationsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
@@ -1391,6 +1382,15 @@
       },
       "Export": {
         "Name": "sls-my-application-tracker-backend-dev-ListApplicationsLambdaFunctionQualifiedArn"
+      }
+    },
+    "UpdateApplicationLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "UpdateApplicationLambdaVersionX1taOK8ZCmJBLwGm1F93lMnWep4J0Lw58EsuJ8goA"
+      },
+      "Export": {
+        "Name": "sls-my-application-tracker-backend-dev-UpdateApplicationLambdaFunctionQualifiedArn"
       }
     },
     "DeleteApplicationLambdaFunctionQualifiedArn": {
@@ -1402,15 +1402,6 @@
         "Name": "sls-my-application-tracker-backend-dev-DeleteApplicationLambdaFunctionQualifiedArn"
       }
     },
-    "LoginLambdaFunctionQualifiedArn": {
-      "Description": "Current Lambda function version",
-      "Value": {
-        "Ref": "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ"
-      },
-      "Export": {
-        "Name": "sls-my-application-tracker-backend-dev-LoginLambdaFunctionQualifiedArn"
-      }
-    },
     "RegisterLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
@@ -1418,6 +1409,15 @@
       },
       "Export": {
         "Name": "sls-my-application-tracker-backend-dev-RegisterLambdaFunctionQualifiedArn"
+      }
+    },
+    "LoginLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ"
+      },
+      "Export": {
+        "Name": "sls-my-application-tracker-backend-dev-LoginLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
