@@ -10,19 +10,67 @@ provider:
 
 plugins:
   - serverless-webpack
-  - serverless-offline
 
 package:
   individually: true
 
+
 functions:
-  # Example function, add more as needed
+  createApplication:
+    handler: src/handlers/applications/create.handler
+    events:
+      - http:
+          path: applications
+          method: post
+          cors: true
+          authorizer: aws_iam
+
+  listApplications:
+    handler: src/handlers/applications/list.handler
+    events:
+      - http:
+          path: applications
+          method: get
+          cors: true
+          authorizer: aws_iam
+
+  updateApplication:
+    handler: src/handlers/applications/update.handler
+    events:
+      - http:
+          path: applications/{applicationId}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
+  deleteApplication:
+    handler: src/handlers/applications/delete.handler
+    events:
+      - http:
+          path: applications/{applicationId}
+          method: delete
+          cors: true
+          authorizer: aws_iam
   hello:
     handler: src/handlers/hello.handler
     events:
       - http:
           path: hello
           method: get
+  register:
+    handler: src/handlers/auth/register.handler
+    events:
+      - http:
+          path: auth/register
+          method: post
+          cors: true
+  login:
+    handler: src/handlers/auth/login.handler
+    events:
+      - http:
+          path: auth/login
+          method: post
+          cors: true
 
 resources:
   # DynamoDB table is managed by Terraform
