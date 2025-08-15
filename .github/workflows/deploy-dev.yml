@@ -3,9 +3,6 @@ name: Deploy to Dev (hrsite-dev-vpc)
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'packages/**'
-      - '.github/workflows/deploy-dev.yml'
 
 jobs:
   deploy:
