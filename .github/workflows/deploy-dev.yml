@@ -1,0 +1,58 @@
+name: Deploy to Dev (hrsite-dev-vpc)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/**'
+      - 'infra/**'
+      - '.github/workflows/deploy-dev.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+      - name: Terraform Init & Apply
+        working-directory: packages/infra
+        run: |
+          terraform init
+          terraform apply -auto-approve
+
+      - name: Install backend dependencies
+        working-directory: packages/backend
+        run: npm ci
+
+      - name: Deploy backend (Serverless)
+        working-directory: packages/backend
+        run: npx serverless deploy --stage dev
+
+      - name: Install frontend dependencies
+        working-directory: packages/frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: packages/frontend
+        run: npm run build
+
+      # Add deployment step for frontend as needed (e.g., S3/CloudFront)

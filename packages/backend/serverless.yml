@@ -1,0 +1,29 @@
+service: my-application-tracker-backend
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE: MyApplicationTracker
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+
+functions:
+  # Example function, add more as needed
+  hello:
+    handler: src/handlers/hello.handler
+    events:
+      - http:
+          path: hello
+          method: get
+
+resources:
+  # DynamoDB table is managed by Terraform
+  Resources: {}
