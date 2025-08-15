@@ -8,14 +8,13 @@ terraform {
       version = ">= 5.0"
     }
   }
-  # Backend configuration commented out for now - will migrate later
-  # backend "s3" {
-  #   bucket         = "myapplicationtracker-tfstate"
-  #   key            = "global/s3/terraform.tfstate"
-  #   region         = "us-east-1"
-  #   dynamodb_table = "myapplicationtracker-tfstate-lock"
-  #   encrypt        = true
-  # }
+  backend "s3" {
+    bucket         = "myapplicationtracker-tfstate"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "myapplicationtracker-tfstate-lock"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
