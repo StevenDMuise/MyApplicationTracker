@@ -1,20 +1,21 @@
 # Terraform configuration for MyApplicationTracker infrastructure
 
 terraform {
-  required_version = ">= 1.6.0"
+  required_version = ">= 1.5.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = ">= 5.0"
     }
   }
-  backend "s3" {
-    bucket         = "myapplicationtracker-tfstate"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "myapplicationtracker-tfstate-lock"
-    encrypt        = true
-  }
+  # Backend configuration commented out for now - will migrate later
+  # backend "s3" {
+  #   bucket         = "myapplicationtracker-tfstate"
+  #   key            = "global/s3/terraform.tfstate"
+  #   region         = "us-east-1"
+  #   dynamodb_table = "myapplicationtracker-tfstate-lock"
+  #   encrypt        = true
+  # }
 }
 
 provider "aws" {
@@ -31,6 +32,16 @@ resource "aws_s3_bucket_versioning" "tfstate" {
   bucket = aws_s3_bucket.tfstate.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate" {
+  bucket = aws_s3_bucket.tfstate.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
 

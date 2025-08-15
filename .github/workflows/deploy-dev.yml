@@ -31,7 +31,7 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
+          terraform_version: 1.5.7
 
       - name: Terraform Init & Apply
         working-directory: packages/infra
@@ -42,6 +42,10 @@ jobs:
       - name: Install backend dependencies
         working-directory: packages/backend
         run: npm ci
+
+      - name: Run backend tests
+        working-directory: packages/backend
+        run: npm test
 
       - name: Deploy backend (Serverless)
         working-directory: packages/backend
@@ -55,4 +59,19 @@ jobs:
         working-directory: packages/frontend
         run: npm run build
 
-      # Add deployment step for frontend as needed (e.g., S3/CloudFront)
+      - name: Deploy frontend to S3
+        working-directory: packages/frontend
+        run: |
+          aws s3 sync dist/ s3://my-application-tracker-ba-serverlessdeploymentbuck-vxpt59fsudhq/serverless/my-application-tracker-frontend/ --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ESE0DJQCHE36U --paths "/*"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
