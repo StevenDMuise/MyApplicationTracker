@@ -30,13 +30,35 @@ export const AuthForm = () => {
           setError('Passwords do not match');
           return;
         }
-        const success = await register(formData.username, formData.email, formData.password);
-        if (!success) {
-          setError('Registration failed. User may already exist.');
+        
+        // Try registration directly
+        const response = await fetch('https://vuy6wqmzpd.execute-api.us-east-1.amazonaws.com/dev/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password
+          })
+        });
+
+        if (response.ok) {
+          // Registration successful, now try to register in auth context
+          const success = await register(formData.username, formData.email, formData.password);
+          if (!success) {
+            setError('Registration successful but login failed. Please try logging in.');
+          }
+        } else {
+          const errorData = await response.json();
+          if (response.status === 409) {
+            setError('Username already exists. Please choose a different username.');
+          } else {
+            setError(errorData.error || 'Registration failed. Please try again.');
+          }
         }
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError('An error occurred. Please check your internet connection and try again.');
     } finally {
       setLoading(false);
     }

@@ -45,7 +45,23 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     };
 
   await dynamoDb.send(new PutCommand({ TableName: USERS_TABLE, Item: userItem }));
-    return { statusCode: 201, body: JSON.stringify({ message: 'User registered successfully' }) };
+    
+    // Return user profile information (excluding sensitive data)
+    const userProfile = {
+      id: userId,
+      username,
+      email,
+      role: 'trial',
+      createdAt: now
+    };
+
+    return { 
+      statusCode: 201, 
+      body: JSON.stringify({ 
+        message: 'User registered successfully', 
+        user: userProfile 
+      }) 
+    };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return { statusCode: 500, body: JSON.stringify({ error: 'Internal server error', details: message }) };

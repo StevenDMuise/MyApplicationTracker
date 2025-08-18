@@ -67,11 +67,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         body: JSON.stringify({ username, email, password })
       });
 
-      const data = await response.json();
-      
       if (response.ok) {
-        // Auto-login after registration
-        return await login(username, password);
+        const data = await response.json();
+        const user = {
+          id: data.user.id,
+          username: data.user.username,
+          email: data.user.email,
+          token: 'dummy-token' // For now, using dummy token since our API doesn't return one yet
+        };
+        setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        return true;
       }
       return false;
     } catch (error) {

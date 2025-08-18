@@ -237,7 +237,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/createApplication.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/createApplication.zip"
               },
               "Handler": "src/handlers/applications/create.handler",
               "Runtime": "nodejs20.x",
@@ -267,7 +267,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/listApplications.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/listApplications.zip"
               },
               "Handler": "src/handlers/applications/list.handler",
               "Runtime": "nodejs20.x",
@@ -297,7 +297,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/updateApplication.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/updateApplication.zip"
               },
               "Handler": "src/handlers/applications/update.handler",
               "Runtime": "nodejs20.x",
@@ -327,7 +327,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/deleteApplication.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/deleteApplication.zip"
               },
               "Handler": "src/handlers/applications/delete.handler",
               "Runtime": "nodejs20.x",
@@ -357,7 +357,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/hello.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/hello.zip"
               },
               "Handler": "src/handlers/hello.handler",
               "Runtime": "nodejs20.x",
@@ -387,7 +387,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/register.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/register.zip"
               },
               "Handler": "src/handlers/auth/register.handler",
               "Runtime": "nodejs20.x",
@@ -417,7 +417,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z/login.zip"
+                "S3Key": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z/login.zip"
               },
               "Handler": "src/handlers/auth/login.handler",
               "Runtime": "nodejs20.x",
@@ -480,6 +480,16 @@
               "CodeSha256": "pK66Dsg0futPoMP4DVfY8lQdjCaUjhZS80TGNT8zwV8="
             }
           },
+          "LoginLambdaVersionimS50qEopry7eGttkaCOK43irNRwBhVciiDCKfpa1BI": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "LoginLambdaFunction"
+              },
+              "CodeSha256": "/zgNx9J03gZAsZvumNp1pcD2blxXjLwa91YrK7zZ8pY="
+            }
+          },
           "DeleteApplicationLambdaVersionvAT4oOH7FFenBFwUk6PcHvisou5BxH1A8FFnoKldi3Y": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
@@ -490,24 +500,14 @@
               "CodeSha256": "P5U+kqdPdzOgjPlXQY/DQzB2gersdJ0sMp/2aYMPUdY="
             }
           },
-          "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "LoginLambdaFunction"
-              },
-              "CodeSha256": "zCQ1oOy4+RBhW9ObxAV3Qsl4EGubKx85DT+1Al/+Gfw="
-            }
-          },
-          "RegisterLambdaVersionPdvp7Ep0nsCzBcCBo3skfwUYwxGU8gJOJ4Dn4bAOmw": {
+          "RegisterLambdaVersionXcEPbuLtWY9B3dr8haoGVC3DhV2PYoAGrO0Rrs5hVHs": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RegisterLambdaFunction"
               },
-              "CodeSha256": "eg5xTZaKj8yaTnfydVgQwkGJgNo0Dvm540ABXlhBqMI="
+              "CodeSha256": "Ujvsvw56IOjTY5ZhAbHDTAr5S8yUrs2yhwAkaIdQ//E="
             }
           },
           "ApiGatewayRestApi": {
@@ -1105,7 +1105,7 @@
               "LoginLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1755556127468": {
+          "ApiGatewayDeployment1755559488238": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1432,6 +1432,15 @@
               "Name": "sls-my-application-tracker-backend-dev-UpdateApplicationLambdaFunctionQualifiedArn"
             }
           },
+          "LoginLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "LoginLambdaVersionimS50qEopry7eGttkaCOK43irNRwBhVciiDCKfpa1BI"
+            },
+            "Export": {
+              "Name": "sls-my-application-tracker-backend-dev-LoginLambdaFunctionQualifiedArn"
+            }
+          },
           "DeleteApplicationLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
@@ -1441,19 +1450,10 @@
               "Name": "sls-my-application-tracker-backend-dev-DeleteApplicationLambdaFunctionQualifiedArn"
             }
           },
-          "LoginLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ"
-            },
-            "Export": {
-              "Name": "sls-my-application-tracker-backend-dev-LoginLambdaFunctionQualifiedArn"
-            }
-          },
           "RegisterLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RegisterLambdaVersionPdvp7Ep0nsCzBcCBo3skfwUYwxGU8gJOJ4Dn4bAOmw"
+              "Ref": "RegisterLambdaVersionXcEPbuLtWY9B3dr8haoGVC3DhV2PYoAGrO0Rrs5hVHs"
             },
             "Export": {
               "Name": "sls-my-application-tracker-backend-dev-RegisterLambdaFunctionQualifiedArn"
@@ -1805,7 +1805,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "RegisterLambdaVersionPdvp7Ep0nsCzBcCBo3skfwUYwxGU8gJOJ4Dn4bAOmw"
+        "versionLogicalId": "RegisterLambdaVersionXcEPbuLtWY9B3dr8haoGVC3DhV2PYoAGrO0Rrs5hVHs"
       },
       "login": {
         "handler": "src/handlers/auth/login.handler",
@@ -1843,7 +1843,7 @@
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "LoginLambdaVersions7ghzDz3IWVJ0HxR6UwzeMG6flECNGJKUfyiiDIQ"
+        "versionLogicalId": "LoginLambdaVersionimS50qEopry7eGttkaCOK43irNRwBhVciiDCKfpa1BI"
       }
     },
     "resources": {
@@ -1864,7 +1864,7 @@
       "package": {
         "individually": true,
         "artifactsS3KeyDirname": "serverless/my-application-tracker-backend/dev/code-artifacts",
-        "artifactDirectoryName": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z"
+        "artifactDirectoryName": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -1878,7 +1878,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/my-application-tracker-backend/dev/1755556139101-2025-08-18T22:28:59.101Z",
+    "artifactDirectoryName": "serverless/my-application-tracker-backend/dev/1755559500136-2025-08-18T23:25:00.136Z",
     "artifact": ""
   }
 }

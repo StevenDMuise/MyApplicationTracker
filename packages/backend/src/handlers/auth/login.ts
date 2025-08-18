@@ -36,8 +36,22 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       return { statusCode: 401, body: JSON.stringify({ error: 'Invalid username or password' }) };
     }
 
-    // For now, just return a success message (JWT can be added later)
-    return { statusCode: 200, body: JSON.stringify({ message: 'Login successful', userId: user.userId }) };
+    // Return user profile information (excluding sensitive data)
+    const userProfile = {
+      id: user.userId,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      createdAt: user.createdAt
+    };
+
+    return { 
+      statusCode: 200, 
+      body: JSON.stringify({ 
+        message: 'Login successful', 
+        user: userProfile 
+      }) 
+    };
   } catch (err) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Internal server error', details: err instanceof Error ? err.message : String(err) }) };
   }
