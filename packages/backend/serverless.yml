@@ -7,6 +7,20 @@ provider:
   region: us-east-1
   environment:
     DYNAMODB_TABLE: MyApplicationTracker
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:Scan
+          Resource:
+            - arn:aws:dynamodb:${self:provider.region}:*:table/MyApplicationTracker
+            - arn:aws:dynamodb:${self:provider.region}:*:table/MyApplicationTracker/index/*
 
 plugins:
   - serverless-webpack
