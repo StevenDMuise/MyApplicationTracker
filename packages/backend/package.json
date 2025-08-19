@@ -9,15 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.868.0",
-    "@aws-sdk/lib-dynamodb": "^3.868.0",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/uuid": "^10.0.0",
-    "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1692.0",
-    "bcryptjs": "^3.0.2",
     "ts-loader": "^9.5.2",
-    "uuid": "^11.1.0",
     "webpack": "^5.101.2"
   },
   "devDependencies": {
